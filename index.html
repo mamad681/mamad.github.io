@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>نظرسنجی کوتاه</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>📋 نظرسنجی کوتاه</h2>
+
+  <!-- مرحله اسم -->
+  <div id="nameArea">
+    <p>لطفاً اسم خود را وارد کنید:</p>
+    <input type="text" id="userName" placeholder="اسم شما">
+    <button id="nameNext">بعدی</button>
+  </div>
+
+  <!-- رضایت -->
+  <div id="consentArea" class="hidden">
+    <p>قبل از شروع لطفاً تیک رضایت را بزنید.</p>
+    <label><input id="agree" type="checkbox"> ...</label>
+    <br>
+    <button id="start" disabled>شروع</button>
+  </div>
+
+  <!-- پرسشنامه -->
+  <div id="questionArea" class="hidden">
+    <div id="qText"></div>
+    <div id="qOptions"></div>
+    <button id="next" disabled>بعدی</button>
+    <button id="finish" class="hidden">پایان </button>
+    <p id="status"></p>
+  </div>
+
+
+  
+  <script src="script.js"></script>
+</body>
+</html>

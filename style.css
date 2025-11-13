@@ -1,0 +1,380 @@
+/* استایل کلی */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0ba5f2 0%, #bd0d7a 100%);
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* کانتینر اصلی */
+body > * {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* تایپوگرافی */
+h2 {
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #002fff, #00ff26 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+p {
+  color: #718096;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+/* چک‌باکس و دکمه شروع */
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f7fafc;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+label:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #667eea;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/* دکمه‌ها */
+button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  margin: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button:hover::before {
+  opacity: 1;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+#start {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 18px;
+  background: linear-gradient(135deg, #48bb78, #38a169);
+}
+
+/* ناحیه سوالات */
+#questionArea {
+  margin-top: 30px;
+  padding: 25px;
+  background: #f8fafc;
+  border-radius: 15px;
+  border: 2px solid #e2e8f0;
+  animation: slideUp 0.5s ease-out;
+}
+
+#qText {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 25px;
+  text-align: center;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-right: 4px solid #667eea;
+}
+
+/* گزینه‌های سوال */
+#qOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+#qOptions button {
+  background: white;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+  text-align: right;
+  padding: 18px 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#qOptions button:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+  transform: translateX(-5px) translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* استایل برای گزینه‌های انتخاب شده */
+#qOptions button.selected {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  color: white !important;
+  border-color: #667eea !important;
+  transform: translateX(-8px) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* آیکون تیک برای گزینه انتخاب شده */
+#qOptions button.selected::after {
+  content: "✓";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* دکمه‌های ناوبری */
+#next, #finish {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  margin-left: 10px;
+}
+
+#finish {
+  background: linear-gradient(135deg, #ed8936, #dd6b20);
+}
+
+#finish:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ed8936, #c05621);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(237, 137, 54, 0.4);
+}
+
+/* وضعیت */
+#status {
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#status:not(:empty) {
+  background: linear-gradient(135deg, #fed7d7, #feb2b2);
+  border-color: #fc8181;
+  color: #c53030;
+  animation: pulse 2s infinite;
+}
+
+/* کلاس مخفی */
+.hidden {
+  display: none !important;
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(252, 129, 129, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(252, 129, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(252, 129, 129, 0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    transform: translate3d(0,-8px,0);
+  }
+  70% {
+    transform: translate3d(0,-4px,0);
+  }
+  90% {
+    transform: translate3d(0,-2px,0);
+  }
+}
+
+body > * {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* رسپانسیو */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+  
+  body > * {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  button {
+    padding: 12px 25px;
+    font-size: 15px;
+  }
+  
+  #start {
+    padding: 16px;
+    font-size: 16px;
+  }
+  
+  #qOptions button {
+    padding: 15px 20px;
+  }
+  
+  #qOptions button.selected::after {
+    left: 15px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  body > * {
+    padding: 15px;
+  }
+  
+  h2 {
+    font-size: 22px;
+  }
+  
+  #qText {
+    font-size: 18px;
+    padding: 12px;
+  }
+  
+  #qOptions button {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+}
+
+/* افکت‌های ویژه */
+input[type="checkbox"]:checked {
+  animation: bounce 0.5s ease;
+}
+
+#start:enabled {
+  animation: pulse 2s infinite;
+}
+
+#questionArea.show {
+  animation: slideUp 0.5s ease-out;
+}
